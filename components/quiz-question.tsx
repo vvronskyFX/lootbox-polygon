@@ -7,6 +7,7 @@ import {
 } from "../pages/api/check-answer";
 import PrimaryButton from "./primary-button";
 import invariant from "tiny-invariant";
+import { useWeb3 } from "@3rdweb/hooks";
 
 type Props = {
   questionIndex: number;
@@ -27,6 +28,8 @@ export default function QuizQuestion({
 }: Props) {
   const [answerIndex, setAnswerIndex] = useState<number | undefined>(undefined);
   const [submitting, setSubmitting] = useState(false);
+  // Get the Web3 Address here. The provider represents a read-only connection to the blockchain network. 
+  const { address, provider } = useWeb3()
   const [error, setError] = useState<string | undefined>(undefined);
   const [answerResult, setAnswerResult] = useState<AnswerResult | undefined>(
     undefined
@@ -34,6 +37,10 @@ export default function QuizQuestion({
   const [correctAnswerWas, setCorrectAnswerWas] = useState<number | undefined>(
     undefined
   );
+
+  if (!address) {
+    return <p>Please connect your wallet to take the quiz!</p>
+  };
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -44,10 +51,21 @@ export default function QuizQuestion({
         answerIndex !== undefined,
         "Answer index is required to submit"
       );
+      // Here we’re just making sure that provider is defined. It will be as long as the user’s wallet is connected!
+      invariant(
+        provider !== undefined, 
+        "Provider must be defined to submit an answer"
+      );
+      const message = "Please sign this message to confirm your identity and submit the answer.This won't cost any gas!"
+      const signedMessage = await provider.getSigner().signMessage(message);
 
+
+      // Passing in the address here in the API call.
       const payload: CheckAnswerPayload = {
         questionIndex,
         answerIndex,
+        message,
+        signedMessage,
       };
 
       const checkResponse = await axios.post("/api/check-answer", payload);

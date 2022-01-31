@@ -6,6 +6,8 @@
     "start": "next start"
   },
   "dependencies": {
+    "@3rdweb/hooks": "^1.9.2",
+    "@3rdweb/react": "^1.9.3",
     "@3rdweb/sdk": "^1.38.0",
     "axios": "^0.25.0",
     "dotenv": "^14.3.2",

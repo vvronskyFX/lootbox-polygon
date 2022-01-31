@@ -7,21 +7,21 @@ export type Question = {
 
 const quizQuestions: Question[] = [
   {
-    questionText: "What do the initials DB in Aston Martin DB11 stand for?",
+    questionText: "Who now (2022) owns Ranger Rover?",
     image:
-      "https://images.unsplash.com/photo-1642201855395-1c8b44e6e42b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
+      "https://img.search.brave.com/zkTDL0rSxJGxe6U3gG8_iFet1yiaC1sDn39-txNIF78/rs:fit:801:411:1/g:ce/aHR0cDovL2ltZzAy/LmRldmlhbnRhcnQu/bmV0LzljOTMvaS8y/MDA1LzA4My80LzYv/cmFuZ2Vfcm92ZXJf/X192ZWN0b3JfYnlf/YWRyaWFubzEwLnBu/Zw",
     answers: [
-      "Trick question: nothing!",
-      "David Brown",
-      "Drive Better",
-      "Diane Blue",
+      "Volkswagen Group",
+      "Tata Motors",
+      "Ford Motors",
+      "BMW Group",
     ],
     correctAnswerIndex: 1,
   },
   {
     questionText: "Which car brand is this logo for?",
-    image: "https://www.carlogos.org/logo/Lexus-symbol-640x480.jpg",
-    answers: ["Lamborghini", "Lada", "Lotus", "Lexus"],
+    image: "https://img.search.brave.com/L8gS2aUXOdTsXPwlKDzSY2XWlPjZRIhjrb7yTk4zcTc/rs:fit:420:420:1/g:ce/aHR0cHM6Ly9sb2dv/ZGl4LmNvbS9sb2dv/LzEyNDA1MDgucG5n",
+    answers: ["Opel", "Lada", "Lotus", "Saleen"],
     correctAnswerIndex: 3,
   },
   {
