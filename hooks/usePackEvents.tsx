@@ -16,9 +16,25 @@ export default function usePackEvents() {
       const packContract = new ethers.Contract(packAddress, abi, provider);
       packContract.on("TransferSingle", (_operator, _from, to, _id, _value) => {
         if (to === address) {
-          console.log("We received a pack!")
-        }
-      });
-    }
+        toast.success(
+          <div className="flex flex-col gap-2">
+            <p className="text-green-800">
+              {" "}
+              Congratulations! You were awarded an Exotic Garage Pack!
+            </p>
+            <p>
+              View and open it in the{" "}
+              <Link href="/lounge">
+                <a className="underline hover:no-underline">lounge</a>
+              </Link>
+              !
+            </p>
+          </div>,
+          {
+            duration: 5000,
+          }
+         )}
+       });
+      }
   }, [!!provider]);
 }
