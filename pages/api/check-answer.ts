@@ -34,6 +34,7 @@ export default async function Open(
   req: NextApiRequest,
   res: NextApiResponse<CheckAnswerResponse>
 ) {
+  
   // Validate the request body contains expected fields
   if (!req.body.hasOwnProperty("questionIndex")) {
     res.status(400).json({
