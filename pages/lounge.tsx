@@ -15,7 +15,7 @@ export function getStaticProps() {
   };
 }
 
-// Large contract function here:
+// Load contract function here:
 
 export default function Lounge() {
   
@@ -98,6 +98,20 @@ export default function Lounge() {
             <p className="text-gray-800">Balance: {packNfts[0].ownedByAddress.toString()}</p>
             <OpenButton packModule={packModule} afterOpen={getNfts} />
           </div>
+        </div>
+      </div>
+    )}
+
+      {bundleNfts.length > 0 && (
+      <div>
+        <h2 className="text-4xl font-bold">Your Collection</h2>
+        <div className="grid grid-cols-2 md:grid-cols-3 mt-4 gap-2">
+          {bundleNfts.map((nft) => (
+            <div className="border border-blue-500 rounded-lg p-4" key={nft.metadata.id}>
+              <NFT metadata={nft.metadata} />
+              <p className="text-gray-800">Balance: {nft.ownedByAddress.toString()}</p>
+            </div>
+          ))}
         </div>
       </div>
     )}
